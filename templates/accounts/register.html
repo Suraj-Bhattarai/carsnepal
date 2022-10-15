@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %} | Register {% endblock %}
+{% block content %}
+{% load static %}
+
+<div class="bg-secondary">
+
+
+
+<div class="container mt-10" style="width: 600px;">
+
+    <div class="card border-0 shadow mb-10">
+        <div class="card-body">
+            <h2 class="h4 mb-3"><h3>Create an account</h3></h2>
+            {% include 'includes/messages.html' %}
+
+
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                <div class="row gx-4 gy-3">
+                    <div class="col-sm-6">
+                      <label class="form-label" for="reg-fn">First Name</label>
+                      <input name="firstname" class="form-control" type="text" required="" id="reg-fn">
+                    </div>
+                    <div class="col-sm-6">
+                      <label class="form-label" for="reg-ln">Last Name</label>
+                      <input name="lastname" class="form-control" type="text" required="" id="reg-ln">
+                    </div>
+
+                    <div class="col-sm-6">
+                        <label class="form-label">Username</label>
+                        <input name="username" class="form-control" type="text" required="">
+                      </div>
+
+                    <div class="col-sm-6">
+                      <label class="form-label" for="reg-email">E-mail Address</label>
+                      <input  name="email" class="form-control" type="email" required="" id="reg-email">
+                    </div>
+                    
+                    <div class="col-sm-6">
+                      <label class="form-label" for="reg-password">Password</label>
+                      <input name="password" class="form-control" type="password" required="" id="reg-password">
+                    </div>
+
+                    <div class="col-sm-6">
+                      <label class="form-label" for="reg-password-confirm">Confirm Password</label>
+                      <input name="confirm_password" class="form-control" type="password" required="" id="reg-password-confirm">
+                    </div>
+                    <div class="col-12 text-end">
+                      <button class="btn btn-primary" type="submit"><i class="ci-user me-2 ms-n1"></i>Sign Up</button>
+                    </div>
+                  </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+                    
+</div>
+        
+     
+
+{% endblock %}

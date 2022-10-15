@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+
+{% block title %} | {{single_car.car_title}} {% endblock %}
+{% block content %}
+
+{% load static %}
+{% load humanize %}
+
+
+
+
+
+
+
+<div class="page-title-overlap bg-accent pt-10">
+  <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
+    <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+          <li class="breadcrumb-item"><a class="text-nowrap" href="{% url 'home' %}"><i class="ci-home"></i>Home</a>
+          </li>
+          <li class="breadcrumb-item text-nowrap"><a href="">Cars
+          </a>
+          </li>
+          <li class="breadcrumb-item text-nowrap active" aria-current="page">{{single_car.car_title}}</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
+      <h1 class="h3 text-light mb-0">{{single_car.car_title}}</h1>
+    </div>
+  </div>
+</div>
+
+
+<section class="container pb-md-4">
+  <div class="bg-light shadow-lg rounded-3 px-4 py-lg-4 py-3 mb-5">
+    <div class="py-lg-3 py-2 px-lg-3">
+      <div class="row gy-4">
+
+        <div class="col-lg-6">
+          <div class="sticky-top pt-5">
+            <img class="rounded-3 shadow-md" src="{{single_car.car_photo.url}}">
+          </div>
+        </div>
+
+
+
+        <div class="col-lg-6">
+          <div class="ps-xl-5 ps-lg-3">
+
+            <h2 class="h3 mb-3">{{single_car.car_title}}</h2>
+            <div class="d-flex align-items-center flex-wrap text-nowrap mb-sm-4 mb-3 fs-sm">
+              <div class="mb-2 me-sm-3 me-2 text-muted"><i class="flaticon-pin"></i>{{single_car.state}},
+                {{single_car.city}}</div>
+            </div>
+
+            <div class="mb-3 pb-md-2">
+              <h3 class="h6 mb-2 fs-sm text-muted">Car Features</h3>
+              {% for i in single_car.features %}
+              <span class="badge bg-primary m-1" style="font-size: 14px;">{{i}}</span>
+              {% endfor %}
+            </div>
+
+            
+          
+
+            <div class="mb-3 pb-md-2">
+              <h3 class="h6 mb-2 fs-sm text-muted">Current price</h3>
+              <h2 class="h3 mb-1">Rs. {{single_car.price | intcomma}}</h2>
+            </div>
+            <div class="row row-cols-sm-2 row-cols-1 g-sm-4 g-3 mb-4">
+              
+              <div class="col">
+                <button type="button" class="btn btn-lg btn-accent d-block w-100" data-bs-toggle="modal" data-bs-target="#inquiryModal">Send
+                message</button>
+              </div>
+
+            </div>
+
+
+
+            <div class="pt-3">
+              <div class="mb-4" style="overflow-x: auto;">
+                <ul class="nav nav-tabs nav-fill flex-nowrap text-nowrap mb-1" role="tablist">
+                  <li class="nav-item"><a class="nav-link active" href="#details" data-bs-toggle="tab"
+                      role="tab">Description</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#properties" data-bs-toggle="tab"
+                      role="tab">Properties</a></li>
+                </ul>
+              </div>
+
+              <div class="tab-content">
+
+                <div class="tab-pane fade " id="properties" role="tabpanel">
+                  <ul class="list-unstyled mb-0">
+
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Token Standard</span>
+                      <span class="text-body">ERC-1155</span>
+                    </li>
+
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Color: </span>{{single_car.color}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Model: </span>{{single_car.model}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Year: </span>{{single_car.year}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Condition: </span>{{single_car.condition}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Body Style: </span>{{single_car.body_style}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Engine: </span>{{single_car.engine}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Transmission: </span>{{single_car.transmission}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Interior: </span>{{single_car.interior}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Miles: </span>{{single_car.miles | intcomma}} km
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Doors: </span>{{single_car.doors}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Passengers: </span>{{single_car.passengers}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Vin No.: </span>{{single_car.vin_no}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Milage: </span>{{single_car.milage}}
+                    </li>
+
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Fuel Type: </span>{{single_car.fuel_type}}
+                    </li>
+                    <li class="d-flex justify-content-between mb-2 fs-sm">
+                      <span>Owners: </span>{{single_car.no_of_owners}}
+                    </li>
+                  </ul>
+                </div>
+
+
+                <div class="tab-pane fade show active" id="details" role="tabpanel">
+                  <p class="">
+                    {{single_car.description | safe }}
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Inquiry Modal -->
+<div class="modal fade" id="inquiryModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="contact-dealer modal-header">
+        <h5 class="modal-title" id="inquiryModalLabel">Contact Dealer</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      </div>
+      <div class="modal-body">
+        <form action="{% url 'inquiry' %}" method="POST">
+          {% csrf_token %}
+
+          {% if user.is_authenticated %}
+          <input type="hidden" name="user_id" value="{{user.id}}">
+          {% else %}
+          <input type="hidden" name="user_id" value="0">
+          {% endif %}
+
+          <input type="hidden" name="car_id" value="{{single_car.id}}">
+          <div class="form-group py-2">
+            <label for="name" class="col-form-label">Hello, My Name is</label>
+            <div class="row ">
+              <div class="col">
+                <input type="text" name="first_name" class="form-control" placeholder="First Name" {% if user.is_authenticated %} value="{{user.first_name}}" {% endif %} required>
+              </div>
+              <div class="col">
+                <input type="text" name="last_name" class="form-control" placeholder="Last Name" {% if user.is_authenticated %} value="{{user.last_name}}" {% endif %} required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group py-2">
+            <select class="form-control" id="sel1" name="customer_need">
+              <option value="I'm interested in this">I'm interested in this</option>
+              <option value="I'd like to know your best price for this">I'd like to know your best price for this
+              </option>
+              <option value="I'd like to test drive this">I'd like to test drive this</option>
+              <option value="I'd like a history report for this">I'd like a history report for this</option>
+            </select>
+          </div>
+
+          <div class="form-group py-2">
+            <input type="text" name="car_title" class="form-control" value="{{ single_car.car_title }}" readonly>
+          </div>
+
+          <div class="form-group">
+            <label for="name" class="col-form-label">I live in</label>
+            <div class="row">
+              <div class="col">
+                <input type="text" name="city" class="form-control" placeholder="City" required>
+              </div>
+              <div class="col">
+                <input type="text" name="state" class="form-control" placeholder="State" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col">
+                <label for="name" class="col-form-label">You can reach me by email at</label>
+                <input type="email" name="email" class="form-control" placeholder="Email Address" {% if user.is_authenticated %} value="{{user.email}}" {% endif %} required>
+              </div>
+              <div class="col">
+                <label for="phone" class="col-form-label">or by phone at</label>
+                <input type="text" name="phone" placeholder="Phone Number (optional)" class="form-control">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="col-form-label">Add comments</label>
+            <textarea name="message" class="form-control" placeholder="Enter your message here (optional)"></textarea>
+          </div>
+          <hr>
+          <input type="submit" value="Send" class="btn btn-block btn-danger mt-2 px-5">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

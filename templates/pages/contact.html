@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} | Contact Us {% endblock %}
+{% block content %}
+
+
+<div class="container mt-10"> 
+    <div class="main-title text-center">
+        <h1 class="mb-5">Contact <span>Us</span></h1>
+    </div>
+    <div class="row mb-5">
+        <div class="col-lg-6 iframe-full-height-wrap">
+        
+          <iframe class="iframe rounded-3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.316270716685!2d85.29102738424021!3d27.708955922780152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198a307baabf%3A0xb5137c1bf18db1ea!2sKathmandu%2044600!5e0!3m2!1sen!2snp!4v1665126643316!5m2!1sen!2snp" height="550" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="col-lg-6 px-4 px-xl-5 py-5">
+          <h2 class="h4 mb-4">Drop us a line</h2>
+
+          <form action="{% url 'contact' %}" method="POST" class="needs-validation mb-3" enctype="multipart/form-data">
+            {% include 'includes/messages.html' %}
+            {% csrf_token %}
+              
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <label class="form-label" for="cf-name">Your name:&nbsp;<span class="text-danger">*</span></label>
+                <input class="form-control" name="name" type="text" id="cf-name" placeholder="Suraj Bhattarai" required="">
+                <div class="invalid-feedback">Please fill in you name!</div>
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label" for="cf-email">Email address:&nbsp;<span class="text-danger">*</span></label>
+                <input class="form-control"  name="email" type="email" id="cf-email" placeholder="surabhattarai@email.com" required="">
+                <div class="invalid-feedback">Please provide valid email address!</div>
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label" for="cf-phone">Your phone:&nbsp;<span class="text-danger">*</span></label>
+                <input class="form-control" type="text" name="phone"  id="cf-phone" placeholder="+977 9876543210" required="">
+                <div class="invalid-feedback">Please provide valid phone number!</div>
+              </div>
+              <div class="col-sm-6">
+                <label class="form-label" for="cf-subject">Subject:</label>
+                <input class="form-control" name="subject" type="text" id="cf-subject" placeholder="Provide short title of your request">
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="cf-message">Message:&nbsp;<span class="text-danger">*</span></label>
+                <textarea class="form-control"  name="message" id="cf-message" rows="6" placeholder="Please describe in detail your request" required=""></textarea>
+                <div class="invalid-feedback">Please write a message!</div>
+                <button class="btn btn-primary mt-4" type="submit">Send message</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
+
+
+
+{% endblock %}
