@@ -10,7 +10,7 @@ To run this project in your development machine, follow these steps:
 
 2. Fork this repo and clone your fork:
 
-    `git clone https://github.com/Suraj-Bhattarai/carsnepal/`
+    `git clone https://github.com/surajbhattrai/carsnepal/`
 
 3. Install dependencies:
 
